@@ -1,0 +1,11 @@
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const newsSchema = new Schema({
+  description: String,
+  date: { type: Date, default: Date.now },
+});
+
+const News = mongoose.model("News", newsSchema);
+
+module.exports = News;
