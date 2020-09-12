@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import{ Columns,Button} from "react-bulma-components/lib/components/columns";
-
 
 function Saved() {
   // Setting our component's initial state
-  const [news, setNews] = useState([]);
+  const [articles, setArticles] = useState([]);
 
   // Load all news and store them with setNews
   useEffect(() => {
@@ -14,7 +12,7 @@ function Saved() {
   // Loads all saved news and sets them to news
   function loadSavedNews() {
     API.getSavedNews()
-      .then((res) => setNews(res.data))
+      .then((res) => setArticles(res.data))
       .catch((err) => console.log(err));
   }
 
@@ -26,18 +24,11 @@ function Saved() {
   }
 
   return (
-    <div>
-      {news.map((item) => (
-        <Columns>
-          <Columns.Column size={4}>
-            <Card articles={item}> </Card>
-            <Button onClick={() => deleteNews(item._id)} 
-             color="success">
-              Delete
-            </Button>
-          </Columns.Column>
-        </Columns>
-      ))}
+    <div className="container">
+      <CardGrid articles={articles}> </CardGrid>
+      <Button onClick={() => deleteNews(item._id)} color="success">
+        Delete
+      </Button>
     </div>
   );
 }
