@@ -1,25 +1,22 @@
-
-import React, { Component } from "react";
-import {BrowserRouter as Router, Route, } from "react-router-dom"
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
+//import Navbar from "./components/Navbar";
+//import Footer from "./components/Footer";
 
-import React, { Component, useState, useEffect } from "react";
-
-class App extends Component {
-  render() {
+const App = () => {
+   
     return (
       <Router>
-        <div className="App">
-          <Navbar color="dark" >PLease work</Navbar>
+        <div>
           <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/saved" component={Saved} />
-          <h1>Happily Woke!</h1>
-          <Footer />
         </div>
       </Router>  
     );
-  }
+  
 }
 
 export default App;
