@@ -4,7 +4,7 @@ import './style.css';
 
 function Search() {
     return (
-        <button class="button">Search</button>
+        <button className="button">Search</button>
     )
 };
 
