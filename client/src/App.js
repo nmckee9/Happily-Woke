@@ -1,17 +1,39 @@
-import React, { Component } from "react";
-import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Navbar } from 'react-bulma-components/dist';
+import React, { Component, useState, useEffect } from "react";
 import "./App.css";
+import CardGrid from "./components/CardGrid";
+import API from "./utils/API";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Navbar color="dark" >PLease work</Navbar>
-        <h1>Happily Woke!</h1>
-      </div>
-    );
+const App = () => {
+  const [articles, setArticles] = useState([])
+
+  useEffect(() => {
+    loadArticles();
+  }, [])
+
+  const loadArticles = () => {
+    const countryCode = "us";
+    API.headlinesCountry(countryCode)
+
+      .then(res => {
+        console.log(res.data.articles);
+        if (res.data.length === 0) {
+          throw new Error("No results found.");
+        }
+        if (res.data.status === "error") {
+          throw new Error(res.data.message);
+        }
+        setArticles(res.data.articles);//this does not filter
+      })
   }
+
+  return (
+    <div className="App">
+      <div className="container">
+        <h1>Happily Woke!</h1>
+        <CardGrid articles={articles} />
+      </div>
+    </div>
+  );
 }
 
 export default App;
