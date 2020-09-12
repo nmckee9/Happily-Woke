@@ -1,43 +1,25 @@
+
+import React, { Component } from "react";
+import {BrowserRouter as Router, Route, } from "react-router-dom"
+import Home from "./pages/Home";
+import Saved from "./pages/Saved";
+
 import React, { Component, useState, useEffect } from "react";
-import "./App.css";
-import CardGrid from "./components/CardGrid";
-import API from "./utils/API";
-import Input from "./components/Input/index";
-import Search from "./components/SearchBtn/index"
 
-const App = () => {
-  const [articles, setArticles] = useState([])
-
-  useEffect(() => {
-    loadArticles();
-  }, [])
-
-  const loadArticles = () => {
-    const countryCode = "us";
-    API.headlinesCountry(countryCode)
-
-      .then(res => {
-        console.log(res.data.articles);
-        if (res.data.length === 0) {
-          throw new Error("No results found.");
-        }
-        if (res.data.status === "error") {
-          throw new Error(res.data.message);
-        }
-        setArticles(res.data.articles);//this does not filter
-      })
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Navbar color="dark" >PLease work</Navbar>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/saved" component={Saved} />
+          <h1>Happily Woke!</h1>
+          <Footer />
+        </div>
+      </Router>  
+    );
   }
-
-  return (
-    <div className="App">
-      <div className="container">
-        <h1>Happily Woke!</h1>
-        <Input />
-        <Search />
-        <CardGrid articles={articles} />
-      </div>
-    </div>
-  );
 }
 
 export default App;
