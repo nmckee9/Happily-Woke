@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const Home = () => {
   const [search, setSearch] = useState("Wikipedia");
+  const [mood, setMood] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
@@ -48,6 +49,21 @@ const Home = () => {
       })
       .catch(err => setError(err));
   }, [search]);
+
+  handleInputChange = event => {
+    setSearch(event.target.value);
+  };
+
+  handleBtnClick = event => {
+    const btnName = event.target.getAttribute("data-value");
+    if (btnName === "positive") {
+      setMood(btnName)
+    } 
+    if (btnName === "everything") {
+      setMood(btnName)
+    }
+  };
+
 };
 
 export default Home;
