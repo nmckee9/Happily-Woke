@@ -1,10 +1,8 @@
-
 import React, { Component } from "react";
 import {BrowserRouter as Router, Route, } from "react-router-dom"
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
-
-import React, { Component, useState, useEffect } from "react";
+import "./App.css";
 
 class App extends Component {
   render() {
