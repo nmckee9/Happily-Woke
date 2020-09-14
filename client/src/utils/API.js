@@ -7,7 +7,7 @@ export default {
     return axios.get(
       'http://newsapi.org/v2/top-headlines?' +
       'country=' + countryCode + 
-       '&apiKey=' +process.env.REACT_APP_API_KEY
+       '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
   },
   
@@ -15,42 +15,42 @@ export default {
   headlinesCountryAndCategory: function (countryCode, category) {
     return axios.get(
       'http://newsapi.org/v2/top-headlines?country=' + countryCode + '&category=' + category +
-       '&apiKey=' +process.env.REACT_APP_API_KEY
+       '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     )
   },
 
   //i.e. Top headlines from BBC News. (You can't mix this param with the country or category params.)
   headlinesSources: function (sources) {
     return axios.get(
-      'http://newsapi.org/v2/top-headlines?sources=' + sources + '&apiKey=' + process.env.REACT_APP_API_KEY
+      'http://newsapi.org/v2/top-headlines?sources=' + sources + '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
     );
   },
 
   //i.e. Top headlines about Trump
   headlinesQuery: function (query) {
     return axios.get(
-      'http://newsapi.org/v2/top-headlines?q=' + query + '&apiKey=' + process.env.REACT_APP_API_KEY
+      'http://newsapi.org/v2/top-headlines?q=' + query + '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
     );
   },
 
   //everything= breaking news as well as lesser articles. Keywords or phrases to search for in the article title and body. i.e. All articles about Bitcoin
   everythingQuery: function (query) {
     return axios.get(
-      'http://newsapi.org/v2/everything?q=' + query +  '&apiKey=' +process.env.REACT_APP_API_KEY
+      'http://newsapi.org/v2/everything?q=' + query +  '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
   },
 
   //Keywords or phrases to search for in the article title only.
   everythingQueryinTitle: function (query) {
     return axios.get(
-      'http://newsapi.org/v2/everything?qInTitle=' + query + '&apiKey=' + process.env.REACT_APP_API_KEY
+      'http://newsapi.org/v2/everything?qInTitle=' + query + '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
     );
   },
 
   //A comma-seperated string of identifiers (maximum 20) for the news sources or blogs you want headlines from. 
   everythingSources: function (sources) {
     return axios.get(
-      'http://newsapi.org/v2/everything?sources=' + sources + '&apiKey=' + process.env.REACT_APP_API_KEY
+      'http://newsapi.org/v2/everything?sources=' + sources + '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
     );
   },
 
@@ -58,7 +58,7 @@ export default {
   everythingQueryFromTo: function (query, from, to) {
     return axios.get(
       'http://newsapi.org/v2/everything?q=' + query + '&from=' + from 
-      + '&to=' + to + '&apiKey=' + process.env.REACT_APP_API_KEY
+      + '&to=' + to + '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
     );
   },
 
@@ -66,7 +66,7 @@ export default {
   everythingQuerySort: function (query, sortBy) {
     return axios.get(
       'http://newsapi.org/v2/everything?q=' + query + '&sortBy=' + sortBy 
-      +  '&apiKey=' +process.env.REACT_APP_API_KEY
+      +  '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
   },
 
@@ -75,7 +75,28 @@ export default {
     return axios.get(
       'http://newsapi.org/v2/everything?q=' + query + '&from=' + from 
       + '&to=' + to + '&sortBy=' + sortBy 
-      +  '&apiKey=' +process.env.REACT_APP_API_KEY
+      +  '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
-  }
+  },
+
+  //API routes to mongo db
+  // Get all aticles
+  saveArticle: function(articleData) {
+    return axios.post("/api/articles", articleData);
+  },
+
+  //get all articles
+  getArticles: function () {
+    return axios.get("/api/articles");
+  },
+
+// Gets the article with the given id
+  getArticle: function(id) {
+    return axios.get("/api/articles/" + id);
+  },
+
+  // Romoves the article with the given id
+  deleteArticle: function(id) {
+    return axios.delete("/api/articles/" + id);
+  },
 }
