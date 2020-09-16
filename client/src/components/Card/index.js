@@ -3,6 +3,9 @@ import './style.css'
 import { useLocation } from 'react-router-dom';
 import SaveFooter from '../SaveFooter';
 import DeleteFooter from '../DeleteFooter';
+import Positive from "../FeelingDots/Postive";
+import Negative from "../FeelingDots/Negative";
+import Neutral from "../FeelingDots/Neutral";
 
 export const CardYesImage = ({ article }) => {
   let location = useLocation();
@@ -11,7 +14,6 @@ export const CardYesImage = ({ article }) => {
   const moment = require('moment-timezone');
   let utcTime = article.publishedAt;
   const local_date = moment.tz(utcTime, "America/New_York").format('MMM Do YYYY h:mmA');
-  console.log("local_date", local_date);
 
   return (
     <div
@@ -38,6 +40,15 @@ export const CardYesImage = ({ article }) => {
 
       </div>
       {location.pathname === "/" ? <SaveFooter article={article} /> : <DeleteFooter />}
+      {(() => {
+        if (article.compoundScore >= 0.05) {
+          return <Positive />;
+        } else if (-0.05 < article.compoundScore < 0.05) {
+          return <Negative />;
+        } else {
+          return <Neutral />;
+        }
+      })()}
     </div>
   )
 };
@@ -49,7 +60,6 @@ export const CardNoImage = ({ article }) => {
   const moment = require('moment-timezone');
   let utcTime = article.publishedAt;
   const local_date = moment.tz(utcTime, "America/New_York").format('MMM Do YYYY h:mmA');
-  console.log("local_date", local_date);
 
   return (
     <div className="card equal-height">

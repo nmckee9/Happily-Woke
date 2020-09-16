@@ -25,3 +25,12 @@
   background: white;
 } */
 
+.mood {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.container {  
+  background-color:transparent !important;
+}
