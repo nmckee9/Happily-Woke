@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import API from "../../utils/API";
+import CardGrid from "../../components/CardGrid";
+import Button from "../../components/SearchBtn";
+
 
 function Saved() {
   // Setting our component's initial state
@@ -26,7 +30,7 @@ function Saved() {
   return (
     <div className="container">
       <CardGrid articles={articles}> </CardGrid>
-      <Button onClick={() => deleteNews(item._id)} color="success">
+      <Button color="success">
         Delete
       </Button>
     </div>

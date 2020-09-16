@@ -3,6 +3,7 @@ import CardGrid from "../../components/CardGrid";
 import API from "../../utils/API";
 import Input from "../../components/Input";
 import Search from "../../components/SearchBtn";
+import Modal from "../../components/Modal";
 
 
 
@@ -11,9 +12,11 @@ const Home = () => {
   const [error, setError] = useState("");
   const [articles, setArticles] = useState([]);
   const [mood, setMood] = useState("");
+  const [modalOpen, setmodalOpen]= useState (false);
 
   useEffect(() => {
     loadArticles();
+    setmodalOpen(true);
   }, []);
 
   const loadArticles = () => {
@@ -67,6 +70,7 @@ const Home = () => {
 
   return (
     <div className="container">
+      <Modal show={modalOpen} close={() => setmodalOpen(false) }>hello</Modal>
       <Input />
       <Search />
       <CardGrid articles={articles} />

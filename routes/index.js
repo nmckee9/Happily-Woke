@@ -1,4 +1,4 @@
-var router = require(express).Router()
+var router = require("express").Router()
 var db = require("../models")
 
 router.get("/api/news", function(req, res){
