@@ -10,7 +10,7 @@ export default {
        '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
   },
-  
+
   //i.e. Top business headlines from Germany
   headlinesCountryAndCategory: function (countryCode, category) {
     return axios.get(
@@ -80,6 +80,7 @@ export default {
   },
 
   //API routes to mongo db
+  
   // Get all aticles
   saveArticle: function(articleData) {
     return axios.post("/api/articles", articleData);
