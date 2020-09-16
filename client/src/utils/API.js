@@ -6,8 +6,8 @@ export default {
   headlinesCountry: function (countryCode) {
     return axios.get(
       'http://newsapi.org/v2/top-headlines?' +
-      'country=' + countryCode +
-      '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
+      'country=' + countryCode + 
+       '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
   },
 
@@ -15,7 +15,7 @@ export default {
   headlinesCountryAndCategory: function (countryCode, category) {
     return axios.get(
       'http://newsapi.org/v2/top-headlines?country=' + countryCode + '&category=' + category +
-      '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
+       '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     )
   },
 
@@ -36,7 +36,7 @@ export default {
   //everything= breaking news as well as lesser articles. Keywords or phrases to search for in the article title and body. i.e. All articles about Bitcoin
   everythingQuery: function (query) {
     return axios.get(
-      'http://newsapi.org/v2/everything?q=' + query + '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
+      'http://newsapi.org/v2/everything?q=' + query +  '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
   },
 
@@ -57,7 +57,7 @@ export default {
   //Query with from/to dates and optional time of the oldest/newest articles allowed. This should be in ISO 8601 format (e.g. 2020-09-10 or 2020-09-10T00:11:56).
   everythingQueryFromTo: function (query, from, to) {
     return axios.get(
-      'http://newsapi.org/v2/everything?q=' + query + '&from=' + from
+      'http://newsapi.org/v2/everything?q=' + query + '&from=' + from 
       + '&to=' + to + '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
     );
   },
@@ -65,21 +65,22 @@ export default {
   //Query and sort (relevancy, popularity, publishedAt)
   everythingQuerySort: function (query, sortBy) {
     return axios.get(
-      'http://newsapi.org/v2/everything?q=' + query + '&sortBy=' + sortBy
-      + '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
+      'http://newsapi.org/v2/everything?q=' + query + '&sortBy=' + sortBy 
+      +  '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
   },
 
   //Combines the above two. I.e. All articles mentioning Apple from yesterday, sorted by popular publishers first
   everythingQueryFromToSort: function (query, from, to, sortBy) {
     return axios.get(
-      'http://newsapi.org/v2/everything?q=' + query + '&from=' + from
-      + '&to=' + to + '&sortBy=' + sortBy
-      + '&pageSize=100&apiKey=' + process.env.REACT_APP_API_KEY
+      'http://newsapi.org/v2/everything?q=' + query + '&from=' + from 
+      + '&to=' + to + '&sortBy=' + sortBy 
+      +  '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
   },
 
- //API routes to mongo db
+  //API routes to mongo db
+  
   // Get all aticles
   saveArticle: function(articleData) {
     return axios.post("/api/articles", articleData);
@@ -99,5 +100,4 @@ export default {
   deleteArticle: function(id) {
     return axios.delete("/api/articles/" + id);
   },
-
 }
