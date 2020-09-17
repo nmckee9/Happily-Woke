@@ -12,9 +12,11 @@ const Home = () => {
   const [error, setError] = useState("");
   const [articles, setArticles] = useState([]);
   const [mood, setMood] = useState("");
+  const [modalOpen, setmodalOpen]= useState (false);
 
   useEffect(() => {
     loadArticles();
+    setmodalOpen(true);
   }, []);
 
   const loadArticles = () => {
@@ -78,6 +80,8 @@ const Home = () => {
 
   return (
     <div className="container">
+
+      <Modal show={modalOpen} close={() => setmodalOpen(false) }>hello</Modal>
       <Input onChange={handleInputChange} value={ search } />
       <Search onClick={handleFormSubmit}>Search</Search>
       <CardGrid articles={articles} />
