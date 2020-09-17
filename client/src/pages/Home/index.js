@@ -79,7 +79,7 @@ const Home = () => {
   return (
     <div className="container">
       <Input onChange={handleInputChange} value={ search } />
-      <Search onClick={handleFormSubmit}/>
+      <Search onClick={handleFormSubmit}>Search</Search>
       <CardGrid articles={articles} />
     </div>
   );

@@ -12,7 +12,7 @@ const Modal = (props) => {
       >
         <div className="modal-header">
           <h3>Happily Woke</h3>
-          <span className="close-modal-btn" onClick={props.close}>
+          <span className="close-modal-btn" >onClick={props.close}
             ×
           </span>
         </div>
