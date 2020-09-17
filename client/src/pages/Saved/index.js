@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import CardGrid from "../../components/CardGrid"
+import API from "../../utils/API" 
 
 function Saved() {
   // Setting our component's initial state
@@ -26,9 +28,9 @@ function Saved() {
   return (
     <div className="container">
       <CardGrid articles={articles}> </CardGrid>
-      <Button onClick={() => deleteNews(item._id)} color="success">
+      {/* <Button onClick={() => deleteNews(item._id)} color="success">
         Delete
-      </Button>
+      </Button> */}
     </div>
   );
 }

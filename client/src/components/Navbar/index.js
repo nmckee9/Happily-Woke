@@ -1,5 +1,7 @@
 import React from "react";
 import "./style.css";
+
+
 function Navbar() {
   return (
     <nav className="navbar is-info nav__padding">

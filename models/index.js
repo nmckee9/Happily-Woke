@@ -2,8 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const newsSchema = new Schema({
+  title: String,
+  urlToImage: String,
   description: String,
-  date: { type: Date, default: Date.now },
+  title: string,
+  compoundScore: Number,
+  publishedAt: String,
+ 
 });
 
 const News = mongoose.model("News", newsSchema);

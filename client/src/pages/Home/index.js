@@ -3,6 +3,8 @@ import CardGrid from "../../components/CardGrid";
 import API from "../../utils/API";
 import Input from "../../components/Input";
 import Search from "../../components/SearchBtn";
+import Navbar from "../../components/Navbar";
+// import Footer from "../../components/Footer";
 
 
 
@@ -67,9 +69,11 @@ const Home = () => {
 
   return (
     <div className="container">
+      {/* <Navbar /> */}
       <Input />
       <Search />
       <CardGrid articles={articles} />
+      {/* <Footer /> */}
     </div>
   );
 };
