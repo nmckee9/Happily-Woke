@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const newsSchema = new Schema({
-  title: String,
+  author: String,
   urlToImage: String,
   description: String,
-  title: string,
+  title: String,
   compoundScore: Number,
-  publishedAt: String,
+  publishedAt: String
  
 });
 
