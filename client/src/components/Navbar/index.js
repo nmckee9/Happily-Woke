@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <nav className="navbar is-info nav__padding">
       <div className="navbar-brand">
-        <a className="navbar-item" href="/"></a>
+        <a className="navbar-item" href="/">Happily Woke!</a>
       </div>
       <div id="navbarExampleTransparentExample" className="navbar-menu">
         <div className="navbar-start">

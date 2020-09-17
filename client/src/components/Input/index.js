@@ -1,6 +1,5 @@
-import React from 'react';
-
-import './style.css';
+import React from "react";
+import "./style.css";
 
 function Input(props) {
     return (
@@ -11,5 +10,6 @@ function Input(props) {
         </div>
     )
 };
+
 
 export default Input;
