@@ -23,7 +23,6 @@ const Home = () => {
     const countryCode = "us";
     API.headlinesCountry(countryCode)
       .then((res) => {
-        console.log(res.data.articles);
         if (res.data.length === 0) {
           throw new Error("No results found.");
         }
@@ -45,7 +44,6 @@ const Home = () => {
           article.compoundScore = compoundScore;
 
           const filteredArray = res.data.articles.filter(article => article.compoundScore >= 0.05);
-          console.log(filteredArray);
           setArticles(filteredArray);
         }
       })
@@ -54,9 +52,20 @@ const Home = () => {
     //setArticles(res.data.articles);//this does not filter
   };
 
-  // handleInputChange = (event) => {
-  //   setSearch(event.target.value);
-  // };
+  const handleInputChange = event => {
+    const { value } = event.target;
+    setSearch(value);
+  };
+  const handleFormSubmit = event => {
+    event.preventDefault();
+    API.everythingQuery(search)
+      .then(res => {setArticles(res.data.articles)
+      console.log(res.data.articles)})
+      .catch(err => console.log(err));
+  };
+
+
+
 
   // handleBtnClick = (event) => {
   //   const btnName = event.target.getAttribute("data-value");
@@ -68,11 +77,13 @@ const Home = () => {
   //   }
   // };
 
+
   return (
     <div className="container">
+
       <Modal show={modalOpen} close={() => setmodalOpen(false) }>hello</Modal>
-      <Input />
-      <Search />
+      <Input onChange={handleInputChange} value={ search } />
+      <Search onClick={handleFormSubmit}>Search</Search>
       <CardGrid articles={articles} />
     </div>
   );

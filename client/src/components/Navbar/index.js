@@ -1,17 +1,29 @@
-import React, { Component } from "react";
-import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Navbar } from 'react-bulma-components/dist';
-
-
-class Navbar extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Navbar color="primary" >PLease work</Navbar>
-        <h1>Happily Woke!</h1>
+import React from "react";
+import "./style.css";
+function Navbar() {
+  return (
+    <nav className="navbar is-info nav__padding">
+      <div className="navbar-brand">
+        <a className="navbar-item" href="/">Happily Woke!</a>
       </div>
-    );
-  }
+      <div id="navbarExampleTransparentExample" className="navbar-menu">
+        <div className="navbar-start">
+          <a className="navbar-item" href="/home">
+            Home
+          </a>
+          <a className="navbar-item" href="/saved">
+            Saved
+          </a>
+        </div>
+
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <div className="field is-grouped"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
 }
 
 export default Navbar;

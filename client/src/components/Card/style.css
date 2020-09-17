@@ -1,3 +1,36 @@
 .card .card-image{
   border-radius: 10px;
 }
+
+.equal-height {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.equal-height .card-content {
+  flex: auto;
+}
+
+.center-no-image-ch {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* .button-border {
+  border: none;
+  background: white;
+} */
+
+.mood {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.container {  
+  background-color:transparent !important;
+}
