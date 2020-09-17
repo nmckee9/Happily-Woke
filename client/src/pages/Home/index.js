@@ -3,6 +3,7 @@ import CardGrid from "../../components/CardGrid";
 import API from "../../utils/API";
 import Input from "../../components/Input";
 import Search from "../../components/SearchBtn";
+import Modal from "../../components/Modal";
 
 
 
@@ -67,8 +68,8 @@ const Home = () => {
 
   return (
     <div className="container">
+      <Modal />
       <Input />
-      <Search />
       <CardGrid articles={articles} />
     </div>
   );

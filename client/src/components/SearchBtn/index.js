@@ -2,9 +2,9 @@ import React from 'react';
 
 import './style.css';
 
-function Search() {
+function Search(props) {
     return (
-        <button className="button">Search</button>
+        <button className="button is-medium">{props.children}</button>
     )
 };
 
