@@ -4,7 +4,7 @@ import './style.css';
 
 function Search(props) {
     return (
-        <button className="button is-medium">{props.children}</button>
+        <button className="button" onClick={ props.onClick }>Search</button>
     )
 };
 
