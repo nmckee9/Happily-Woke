@@ -1,0 +1,11 @@
+.foot {
+    display: flex;
+    min-height: 10vh;
+    flex-direction: column;
+  }
+  .foot-content {
+    flex: 1;
+  }
+  .content {
+    text-align: center;
+  }
