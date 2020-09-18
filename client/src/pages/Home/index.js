@@ -37,9 +37,20 @@ const Home = () => {
         if (res.data.status === "error") {
           throw new Error(res.data.message);
         }
+<<<<<<< Updated upstream
 
         const vader = require("vader-sentiment");
 
+=======
+        filterNews(res);
+      })
+      .catch((err) => setError(err));
+  };
+
+  const filterNews = res => {
+    const vader = require("vader-sentiment");
+        
+>>>>>>> Stashed changes
         for (let i = 0; i < res.data.articles.length; i++) {
           let compoundScore;
           const article = res.data.articles[i];
@@ -55,40 +66,27 @@ const Home = () => {
           setArticles(filteredArray);
           setIsLoading(false)
         }
-      })
-      .catch((err) => setError(err));
-
-    //setArticles(res.data.articles);//this does not filter
   };
 
   const handleInputChange = event => {
     const { value } = event.target;
     setSearch(value);
   };
+
   const handleFormSubmit = event => {
     event.preventDefault();
     API.everythingQuery(search)
       .then(res => {
+<<<<<<< Updated upstream
         setArticles(res.data.articles)
         console.log(res.data.articles)
         setIsLoading(false)
+=======
+        filterNews(res)
+>>>>>>> Stashed changes
       })
       .catch(err => console.log(err));
   };
-
-
-
-
-  // handleBtnClick = (event) => {
-  //   const btnName = event.target.getAttribute("data-value");
-  //   if (btnName === "positive") {
-  //     setMood(btnName);
-  //   }
-  //   if (btnName === "everything") {
-  //     setMood(btnName);
-  //   }
-  // };
-
 
   return (
     <div>
