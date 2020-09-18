@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CardGrid from "../../components/CardGrid";
 import API from "../../utils/API";
-// import Input from "../../components/Input";
-// import Search from "../../components/SearchBtn";
-import Modal from "../../components/Modal";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer"
 
@@ -11,19 +8,17 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [articles, setArticles] = useState([]);
-  const [mood, setMood] = useState("");
-  const [modalOpen, setmodalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     setIsLoading(true)
     loadArticles();
-    let pop_status = sessionStorage.getItem('pop_status');
-    if (!pop_status) {
-      setmodalOpen(true);
-      sessionStorage.setItem('pop_status', 1);
-    }
-    if (!modalOpen) return null;
+    // let pop_status = sessionStorage.getItem('pop_status');
+    // if (!pop_status) {
+    //   setActive(true);
+    //   sessionStorage.setItem('pop_status', 1);
+    // }
+    // if (!active) return null;
   }, []);
 
 
@@ -37,11 +32,6 @@ const Home = () => {
         if (res.data.status === "error") {
           throw new Error(res.data.message);
         }
-<<<<<<< Updated upstream
-
-        const vader = require("vader-sentiment");
-
-=======
         filterNews(res);
       })
       .catch((err) => setError(err));
@@ -50,7 +40,6 @@ const Home = () => {
   const filterNews = res => {
     const vader = require("vader-sentiment");
         
->>>>>>> Stashed changes
         for (let i = 0; i < res.data.articles.length; i++) {
           let compoundScore;
           const article = res.data.articles[i];
@@ -77,13 +66,8 @@ const Home = () => {
     event.preventDefault();
     API.everythingQuery(search)
       .then(res => {
-<<<<<<< Updated upstream
-        setArticles(res.data.articles)
-        console.log(res.data.articles)
         setIsLoading(false)
-=======
         filterNews(res)
->>>>>>> Stashed changes
       })
       .catch(err => console.log(err));
   };
@@ -93,10 +77,6 @@ const Home = () => {
 
       <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} />
       <div className="container">
-
-        <Modal show={modalOpen} close={() => setmodalOpen(false)}>hello</Modal>
-        {/* <Input onChange={handleInputChange} value={ search } onClick={handleFormSubmit}/> */}
-        {/* <Search onClick={handleFormSubmit}>Search</Search> */}
         <CardGrid articles={articles} isLoading={isLoading} />
       </div>
       <Footer />
