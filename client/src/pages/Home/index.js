@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from "react";
 import CardGrid from "../../components/CardGrid";
 import API from "../../utils/API";
-import Input from "../../components/Input";
-import Search from "../../components/SearchBtn";
+// import Input from "../../components/Input";
+// import Search from "../../components/SearchBtn";
 import Modal from "../../components/Modal";
-
-
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer"
 
 const Home = () => {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [articles, setArticles] = useState([]);
   const [mood, setMood] = useState("");
-  const [modalOpen, setmodalOpen]= useState (false);
+  const [modalOpen, setmodalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    setIsLoading(true)
     loadArticles();
-    setmodalOpen(true);
+    let pop_status = sessionStorage.getItem('pop_status');
+    if (!pop_status) {
+      setmodalOpen(true);
+      sessionStorage.setItem('pop_status', 1);
+    }
+    if (!modalOpen) return null;
   }, []);
+
 
   const loadArticles = () => {
     const countryCode = "us";
@@ -29,9 +37,9 @@ const Home = () => {
         if (res.data.status === "error") {
           throw new Error(res.data.message);
         }
-        
+
         const vader = require("vader-sentiment");
-        
+
         for (let i = 0; i < res.data.articles.length; i++) {
           let compoundScore;
           const article = res.data.articles[i];
@@ -45,6 +53,7 @@ const Home = () => {
 
           const filteredArray = res.data.articles.filter(article => article.compoundScore >= 0.05);
           setArticles(filteredArray);
+          setIsLoading(false)
         }
       })
       .catch((err) => setError(err));
@@ -59,8 +68,11 @@ const Home = () => {
   const handleFormSubmit = event => {
     event.preventDefault();
     API.everythingQuery(search)
-      .then(res => {setArticles(res.data.articles)
-      console.log(res.data.articles)})
+      .then(res => {
+        setArticles(res.data.articles)
+        console.log(res.data.articles)
+        setIsLoading(false)
+      })
       .catch(err => console.log(err));
   };
 
@@ -79,12 +91,17 @@ const Home = () => {
 
 
   return (
-    <div className="container">
+    <div>
 
-      <Modal show={modalOpen} close={() => setmodalOpen(false) }>hello</Modal>
-      <Input onChange={handleInputChange} value={ search } />
-      <Search onClick={handleFormSubmit}>Search</Search>
-      <CardGrid articles={articles} />
+      <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} />
+      <div className="container">
+
+        <Modal show={modalOpen} close={() => setmodalOpen(false)}>hello</Modal>
+        {/* <Input onChange={handleInputChange} value={ search } onClick={handleFormSubmit}/> */}
+        {/* <Search onClick={handleFormSubmit}>Search</Search> */}
+        <CardGrid articles={articles} isLoading={isLoading} />
+      </div>
+      <Footer />
     </div>
   );
 };

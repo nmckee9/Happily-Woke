@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CardGrid from "../../components/CardGrid";
 import API from "../../utils/API";
 import Search from "../../components/SearchBtn";
+import Footer from "../../components/Footer"
 
 
 
@@ -25,6 +26,7 @@ function Saved() {
   return (
     <div className="container">
       <CardGrid articles={articles}> </CardGrid>
+      <Footer />
     </div>
   );
 }

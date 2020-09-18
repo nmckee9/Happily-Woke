@@ -1,5 +1,5 @@
 import React from 'react'
-import neutral from '../images/neutral.jpg';
+import neutral from '../images/neutral.png';
 
 const Neutral = () => {
   return (
