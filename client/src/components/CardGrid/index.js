@@ -1,11 +1,14 @@
 import React from 'react';
 import { CardYesImage, CardNoImage } from "../Card"
 import "./style.css";
+import Spinner from "../Spinner"
 
-const CardGrid = ({articles}) => {
+const CardGrid = ({articles, isLoading}) => {
   
-  return (
-    <div className='cards'>
+  return isLoading ? (
+    <Spinner />
+  ) : ( 
+      <div className='cards'>
       {articles.map((article, index) => (
         article.urlToImage ? <CardYesImage key=
         {index} 
@@ -16,6 +19,7 @@ const CardGrid = ({articles}) => {
         {index} article={article} />
       ))}
     </div>
+   
   )
 }
 

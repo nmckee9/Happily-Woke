@@ -3,8 +3,8 @@ import './Modal.css';
 
 const Modal = (props) => {
     return (
-        <div>
-            <div className="modal-wrapper"
+        
+            <div className=""
                 style={{
                     transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
                     opacity: props.show ? '1' : '0'
@@ -23,7 +23,7 @@ const Modal = (props) => {
                     <button className="btn-continue">CONTINUE</button>
                 </div>
             </div>
-        </div>
+        
     )
 }
 

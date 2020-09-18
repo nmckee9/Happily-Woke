@@ -34,3 +34,8 @@
 .container {  
   background-color:transparent !important;
 }
+
+.image-size {
+  max-width: 483px;
+  max-height: 322px;
+}
