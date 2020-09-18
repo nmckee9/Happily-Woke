@@ -7,8 +7,7 @@ const newsSchema = new Schema({
   publishedAt: String,
   description: String,
   url: String,
-  compoundScore: Number
-
+  compoundScore: Number,
 });
 
 const News = mongoose.model("News", newsSchema);

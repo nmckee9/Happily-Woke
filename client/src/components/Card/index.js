@@ -22,7 +22,7 @@ export const CardYesImage = ({ article }) => {
         <a href={article.url} target="_blank" rel="noopener noreferrer">
           <figure className="image is-3by2">
             <img
-              src={article.urlToImage} alt={article.title}>
+              classname="image-size" src={article.urlToImage} alt={article.title}>
             </img>
           </figure>
         </a>
@@ -31,7 +31,7 @@ export const CardYesImage = ({ article }) => {
         <a href={article.url}
           className="title is-4 art-title" target="_blank" rel="noopener noreferrer">{article.title}</a>
 
-        <p>Published on {local_date} EST by {article.source.name}</p>
+        <p>Published on {local_date} EST</p>
 
         <br>
         </br>
@@ -39,7 +39,7 @@ export const CardYesImage = ({ article }) => {
         <p>{article.description}</p>
 
       </div>
-      {location.pathname === "/" ? <SaveFooter article={article} /> : <DeleteFooter />}
+      {location.pathname === "/" || location.pathname === "/home" ? <SaveFooter article={article} /> : <DeleteFooter article={article}/>}
       {(() => {
         if (article.compoundScore >= 0.05) {
           return <Positive />;
@@ -69,7 +69,7 @@ export const CardNoImage = ({ article }) => {
           <a href={article.url} target="_blank" rel="noopener noreferrer"
             className="title is-4 art-title">{article.title} </a>
 
-          <p>Published on {local_date} EST by {article.source.name}</p>
+          <p>Published on {local_date} EST</p>
           <br>
           </br>
 
@@ -79,6 +79,16 @@ export const CardNoImage = ({ article }) => {
       </div>
 
       {location.pathname === "/" ? <SaveFooter article={article} /> : <DeleteFooter />}
+
+      {(() => {
+        if (article.compoundScore >= 0.05) {
+          return <Positive />;
+        } else if (-0.05 < article.compoundScore < 0.05) {
+          return <Negative />;
+        } else {
+          return <Neutral />;
+        }
+      })()}
     </div>
   )
 };

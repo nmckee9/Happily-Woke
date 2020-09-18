@@ -1,13 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
-function Navbar() {
+import positive from "../images/positive.png";
+import Input from "../Input";
+import Modal from "../Modal";
+
+
+function Navbar(props, { onClick }) {
+  const [isActive, setisActive] = useState(false);
+  const [modalOpen, setmodalOpen] = useState(false);
+
   return (
-    <nav className="navbar is-info nav__padding">
-      <div className="navbar-brand">
-        <a className="navbar-item" href="/">Happily Woke!</a>
+    <div>
+     <Modal show={modalOpen} close={() => setmodalOpen(false)}>hello</Modal>
+     
+    <nav className="navbar is-fixed-top">
+      <div className="navbar-brand ">
+        <a class="navbar-item brand-name nav-link" href="/home">
+          <img src={positive} className="brand-image" alt="logo" /> happily Woke
+        </a>
+        <a
+          onClick={() => {
+            setisActive(!isActive);
+          }}
+          role="button"
+          className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
-      <div id="navbarExampleTransparentExample" className="navbar-menu">
+      <div id="navbarExampleTransparentExample navbar-toggle " className={`navbar-menu ${isActive ? "is-active" : ""}`}>
         <div className="navbar-start">
+        <p className="navbar-item button mood-btn " role="button"
+            onClick={() => {setmodalOpen(true)}}
+            >Mood
+          </p>
           <a className="navbar-item" href="/home">
             Home
           </a>
@@ -15,14 +45,22 @@ function Navbar() {
             Saved
           </a>
         </div>
-
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="field is-grouped"></div>
-          </div>
+        <div className="field is-grouped is-expanded">
+            <p className="control is-expanded">
+                <input {...props} className="input is-expanded wide-input" type="text" placeholder="Stay informed... happily" />
+            </p>
+            <p class="control">
+                <a className="button is-light search-btn" { ...props }>
+                    Search
+    </a>
+            </p>
         </div>
+
+
       </div>
+     
     </nav>
+    </div>
   );
 }
 

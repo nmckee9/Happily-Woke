@@ -2,3 +2,50 @@
     margin: 1.5rem;
     
 }
+
+.navbar {
+    font-size: 17px;
+    padding: 5px;
+    border-radius: 5px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.brand-image {
+    font-family: 'Rubik', sans-serif;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    z-index: 1;
+}
+
+.brand-name {
+    white-space: pre;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 0;
+    margin-right: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.wide-input {
+    min-width: 369px;
+}
+.nav-link {
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    font-size: 25px;
+  }
+
+  .mood-btn {
+      position: relative;
+      /* border: none; */
+      font-size: 17px;
+      top: 5px;
+      margin-left: 15px;
+  }
+
+ 
