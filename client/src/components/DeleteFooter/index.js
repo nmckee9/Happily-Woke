@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
-//import { useLocation } from 'react-router-dom';
-
 import API from "../../utils/API";
 
 function DeleteFooter({ article }) {
   const [deleted, setDeleted] = useState(false);
-  //let location = useLocation();
 
   function deleteNews() {
     API.deleteArticle(article._id)
