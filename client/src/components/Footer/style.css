@@ -1,6 +1,6 @@
 .foot {
     display: flex;
-    min-height: 10vh;
+    min-height: 9vh;
     flex-direction: column;
   }
   .foot-content {
