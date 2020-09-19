@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import "./style.css";
 import positive from "../images/positive.png";
-import Input from "../Input";
 import Modal from "../Modal";
 
 
-function SavedNav() {
+function SavedNav({ setpreference, preference, active, setActive }) {
   const [isActive, setisActive] = useState(false);
-  const [modalOpen, setmodalOpen] = useState(false);
 
   return (
     <div>
-     <Modal show={modalOpen} close={() => setmodalOpen(false)}>hello</Modal>
+     <Modal setpreference={setpreference} preference={preference} active={active} onClick={() => {setActive(false)}} />
      
     <nav className="navbar is-fixed-top">
       <div className="navbar-brand ">
@@ -34,7 +32,7 @@ function SavedNav() {
       <div id="navbarExampleTransparentExample navbar-toggle " className={`navbar-menu ${isActive ? "is-active" : ""}`}>
         <div className="navbar-start">
         <p className="navbar-item button mood-btn " role="button"
-            onClick={() => {setmodalOpen(true)}}
+            onClick={() => {setActive(true)}}
             >Mood
           </p>
           <a className="navbar-item" href="/home">
