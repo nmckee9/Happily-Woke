@@ -9,10 +9,11 @@ const Home = () => {
   const [error, setError] = useState("");
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
-  const [preference, setPreference] = useState([true, true, true]);
+  const [preference, setPreference] = useState(JSON.parse(localStorage.getItem("preference")) || [true, true, true]);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     //set preference state
     loadArticles();
     // let pop_status = sessionStorage.getItem('pop_status');
@@ -21,7 +22,7 @@ const Home = () => {
     //   sessionStorage.setItem('pop_status', 1);
     // }
     // if (!active) return null;
-  }, []);
+  }, [active]);
 
 
   const loadArticles = () => {
@@ -57,7 +58,7 @@ const Home = () => {
             if (preference[0] && article.compoundScore >= 0.05) {
               return article
             }
-            if (preference[1] && (0.05 >= article.compoundScore >= 0.05)) {
+            if (preference[1] && 0.05 > article.compoundScore && article.compoundScore > 0.05) {
               return article
             }
             if (preference[2] && article.compoundScore <= -0.05) {
@@ -78,8 +79,8 @@ const Home = () => {
     event.preventDefault();
     API.everythingQuery(search)
       .then(res => {
-        setIsLoading(false)
         filterNews(res)
+        setIsLoading(false)
       })
       .catch(err => console.log(err));
   };
@@ -87,7 +88,7 @@ const Home = () => {
   return (
     <div>
 
-      <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} setPreference={setPreference}/>
+      <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} setpreference={setPreference} preference={preference} active={active} setActive={setActive}/>
       <div className="container">
         <CardGrid articles={articles} isLoading={isLoading} />
       </div>

@@ -1,10 +1,25 @@
 import React from 'react';
 import './Modal.css';
 
-const Modal = ({ active, articles, onClick, setPreference }) => {
+const Modal = ({ active, articles, onClick, preference,  setpreference }) => {
     //add handlechange function to set preference
-    const handleInputChange= () => {
-
+    const handleInputChange= (box) => {
+        let newPreference;
+        console.log(box);
+        if (box === "positive") {
+            newPreference= [!preference[0], preference[1], preference[2]]
+            
+        }
+        if (box === "neutral") {
+            newPreference = [preference[0], !preference[1], preference[2]];
+        }
+        if (box === "negative") {
+            newPreference = [preference[0], preference[1], !preference[2]];
+        }
+        setpreference(newPreference);
+            console.log(newPreference)
+            localStorage.setItem("preference", JSON.stringify(newPreference))
+        
     }
     // add is checked value and tunary to each input
     return (
@@ -14,15 +29,15 @@ const Modal = ({ active, articles, onClick, setPreference }) => {
             <div className="modal-content">
                 <div className="box">
                     <label className="checkbox">
-                        <input type="checkbox" onChange={() => handleInputChange("positive")} />
+                        <input type="checkbox" name="positive" checked={preference[0]} onChange={() => handleInputChange("positive")} />
                             Positive
                     </label>
                     <label className="checkbox">
-                        <input type="checkbox" onChange={() => handleInputChange("neutral")} />
+                        <input type="checkbox"  name="neutral" checked={preference[1]} onChange={() => handleInputChange("neutral")} />
                             Neutral
                     </label>
-                    <label class="checkbox">
-                        <input type="checkbox" onChange={() => handleInputChange("negative")}/>
+                    <label className="checkbox">
+                        <input type="checkbox" name="negative" checked={preference[2]} onChange={() => handleInputChange("negative")}/>
                             Negative
                     </label>
                 </div>

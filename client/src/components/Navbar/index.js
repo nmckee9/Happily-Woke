@@ -4,16 +4,15 @@ import positive from "../images/positive.png";
 import Modal from "../Modal";
 
 
-function Navbar(props) {
+function Navbar({onChange, value, onClick, preference, setpreference, active, setActive}) {
   const [isActive, setisActive] = useState(false);
-  const [active, setActive] = useState(false);
 
   return (
     <div>  
-      <Modal setPreference={props.setPreference} active={active} onClick={() => {setActive(false)}}/>
+      <Modal setpreference={setpreference} preference={preference} active={active} onClick={() => {setActive(false)}}/>
       <nav className="navbar is-fixed-top">
         <div className="navbar-brand ">
-          <a class="navbar-item brand-name nav-link" href="/home">
+          <a className="navbar-item brand-name nav-link" href="/home">
             <img src={positive} className="brand-image" alt="logo" /> happily Woke
         </a>
           <a
@@ -45,10 +44,10 @@ function Navbar(props) {
           </div>
           <div className="field is-grouped is-expanded">
             <p className="control is-expanded">
-              <input {...props} className="input is-expanded wide-input" type="text" placeholder="Stay informed... happily" />
+              <input value={value} onChange={onChange} className="input is-expanded wide-input" type="text" placeholder="Stay informed... happily" />
             </p>
             <p class="control">
-              <a className="button is-light search-btn" {...props}>
+              <a className="button is-light search-btn" onClick={onClick}>
                 Search
     </a>
             </p>
