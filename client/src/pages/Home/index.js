@@ -9,9 +9,11 @@ const Home = () => {
   const [error, setError] = useState("");
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
+  const [preference, setPreference] = useState([true, true, true]);
 
   useEffect(() => {
     setIsLoading(true)
+    //set preference state
     loadArticles();
     // let pop_status = sessionStorage.getItem('pop_status');
     // if (!pop_status) {
@@ -51,7 +53,17 @@ const Home = () => {
           compoundScore = arraysOfScores[3][1];
           article.compoundScore = compoundScore;
 
-          const filteredArray = res.data.articles.filter(article => article.compoundScore >= 0.05);
+          const filteredArray = res.data.articles.filter(article => {
+            if (preference[0] && article.compoundScore >= 0.05) {
+              return article
+            }
+            if (preference[1] && (0.05 >= article.compoundScore >= 0.05)) {
+              return article
+            }
+            if (preference[2] && article.compoundScore <= -0.05) {
+              return article
+            }
+          })
           setArticles(filteredArray);
           setIsLoading(false)
         }
@@ -75,7 +87,7 @@ const Home = () => {
   return (
     <div>
 
-      <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} />
+      <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} setPreference={setPreference}/>
       <div className="container">
         <CardGrid articles={articles} isLoading={isLoading} />
       </div>

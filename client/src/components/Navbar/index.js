@@ -10,7 +10,7 @@ function Navbar(props) {
 
   return (
     <div>  
-      <Modal active={active} onClick={() => {setActive(false)}}/>
+      <Modal setPreference={props.setPreference} active={active} onClick={() => {setActive(false)}}/>
       <nav className="navbar is-fixed-top">
         <div className="navbar-brand ">
           <a class="navbar-item brand-name nav-link" href="/home">
