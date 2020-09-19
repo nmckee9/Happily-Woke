@@ -47,6 +47,4 @@ const Modal = ({ active, articles, onClick, preference,  setpreference }) => {
         </form>
     )
 }
-
 export default Modal;
-

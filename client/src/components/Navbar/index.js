@@ -52,13 +52,9 @@ function Navbar({onChange, value, onClick, preference, setpreference, active, se
     </a>
             </p>
           </div>
-
-
         </div>
-
       </nav>
     </div>
   );
 }
-
 export default Navbar;
