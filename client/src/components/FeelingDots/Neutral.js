@@ -5,7 +5,7 @@ const Neutral = () => {
   return (
     <img
       src={neutral}
-      style={{ width: '50px'}}
+      style={{ width: '20px'}}
       alt='Neutral'
       className='mood'
     />

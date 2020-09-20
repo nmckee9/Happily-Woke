@@ -5,7 +5,7 @@ const Positive = () => {
   return (
     <img
       src={positive}
-      style={{ width: '19px'}}
+      style={{ width: '22px'}}
       alt='Positive'
       className='mood'
     />

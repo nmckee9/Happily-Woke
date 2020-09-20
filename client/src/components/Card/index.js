@@ -78,7 +78,7 @@ export const CardNoImage = ({ article }) => {
         </div>
       </div>
 
-      {location.pathname === "/" ? <SaveFooter article={article} /> : <DeleteFooter />}
+      {location.pathname === "/" || location.pathname === "/home" ? <SaveFooter article={article} /> : <DeleteFooter />}
 
       {(() => {
         if (article.compoundScore >= 0.05) {
