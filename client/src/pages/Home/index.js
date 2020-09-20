@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CardGrid from "../../components/CardGrid";
 import API from "../../utils/API";
 import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer"
+import Footer from "../../components/Footer";
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -14,14 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    //set preference state
-    loadArticles();
-    // let pop_status = sessionStorage.getItem('pop_status');
-    // if (!pop_status) {
-    //   setActive(true);
-    //   sessionStorage.setItem('pop_status', 1);
-    // }
-    // if (!active) return null;
+    loadArticles();   
   }, [active]);
 
 
@@ -58,7 +51,7 @@ const Home = () => {
             if (preference[0] && article.compoundScore >= 0.05) {
               return article
             }
-            if (preference[1] && 0.05 > article.compoundScore && article.compoundScore > 0.05) {
+            if (preference[1] && article.compoundScore < 0.05 && article.compoundScore > -0.05) {
               return article
             }
             if (preference[2] && article.compoundScore <= -0.05) {
@@ -80,17 +73,17 @@ const Home = () => {
     API.everythingQuery(search)
       .then(res => {
         filterNews(res)
-        setIsLoading(false)
       })
       .catch(err => console.log(err));
   };
+  
 
   return (
     <div>
-
       <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} setpreference={setPreference} preference={preference} active={active} setActive={setActive}/>
       <div className="container">
         <CardGrid articles={articles} isLoading={isLoading} />
+        
       </div>
       <Footer />
     </div>

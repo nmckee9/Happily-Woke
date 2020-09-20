@@ -4,17 +4,17 @@ import positive from "../images/positive.png";
 import Modal from "../Modal";
 
 
-function Navbar({onChange, value, onClick, preference, setpreference, active, setActive}) {
+function Navbar({ onChange, value, onClick, preference, setpreference, active, setActive }) {
   const [isActive, setisActive] = useState(false);
 
   return (
-    <div>  
-      <Modal setpreference={setpreference} preference={preference} active={active} onClick={() => {setActive(false)}}/>
+    <div>
+      <Modal setpreference={setpreference} preference={preference} active={active} onClick={() => { setActive(false) }} />
       <nav className="navbar is-fixed-top">
         <div className="navbar-brand ">
           <a className="navbar-item brand-name nav-link" href="/home">
             <img src={positive} className="brand-image" alt="logo" /> happily Woke
-        </a>
+          </a>
           <a
             onClick={() => {
               setisActive(!isActive);
@@ -34,22 +34,22 @@ function Navbar({onChange, value, onClick, preference, setpreference, active, se
             <p className="navbar-item button mood-btn " role="button"
               onClick={() => { setActive(!active) }}
             >Mood
-          </p>
+            </p>
             <a className="navbar-item" href="/home">
               Home
-          </a>
+            </a>
             <a className="navbar-item" href="/saved">
               Saved
-          </a>
+             </a>
           </div>
-          <div className="field is-grouped is-expanded">
+          <div className="field is-grouped is-expanded search-bar">
             <p className="control is-expanded">
               <input value={value} onChange={onChange} className="input is-expanded wide-input" type="text" placeholder="Stay informed... happily" />
             </p>
             <p class="control">
               <a className="button is-light search-btn" onClick={onClick}>
                 Search
-    </a>
+              </a>
             </p>
           </div>
         </div>

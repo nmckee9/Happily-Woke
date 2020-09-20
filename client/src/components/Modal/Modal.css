@@ -79,3 +79,13 @@
     font-weight: bold;
 }
 
+.check-box {
+    display: block;
+    margin: 10px;
+    margin-left: 40%;
+    white-space: pre;
+}
+
+.title {
+    margin: auto;
+}
