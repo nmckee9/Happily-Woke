@@ -16,7 +16,7 @@ function DeleteFooter({ article }) {
 
   return (
   
-    <footer class="card-footer">
+    <footer className="card-footer">
         {/* <button
           className="card-footer-item button">Mood Check-in</button> */}
         <button className="card-footer-item button" onClick={deleteNews}>Remove</button>

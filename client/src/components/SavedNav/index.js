@@ -13,7 +13,7 @@ function SavedNav({ setpreference, preference, active, setActive }) {
      
     <nav className="navbar is-fixed-top">
       <div className="navbar-brand ">
-        <a class="navbar-item brand-name nav-link" href="/home">
+        <a className="navbar-item brand-name nav-link" href="/home">
           <img src={positive} className="brand-image" alt="logo" /> happily Woke
         </a>
         <a

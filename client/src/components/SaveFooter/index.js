@@ -22,7 +22,7 @@ function SaveFooter({ article }) {
 
   return (
 
-    <footer class="card-footer">
+    <footer className="card-footer">
         {/* <p
           className="card-footer-item senti-item">Sentiment Analysis (Hover)</p> */}
         <button onClick={saveArticle} className="card-footer-item button-border button">{saved ? "Article Saved!" : "Save Article"}</button>

@@ -82,10 +82,34 @@
 .check-box {
     display: block;
     margin: 10px;
-    margin-left: 40%;
+    margin-left: 28%;
     white-space: pre;
 }
 
 .title {
     margin: auto;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.pos {
+    color: green;
+    font-size: 17px;
+}
+
+.neu {
+    color: goldenrod;
+    font-size: 17px;
+}
+
+.neg {
+    color: red;
+    font-size: 17px;
+}
+
+.asterisk {
+    color:red;
+    font-weight: bold;
 }

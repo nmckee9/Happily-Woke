@@ -46,7 +46,7 @@ function Navbar({ onChange, value, onClick, preference, setpreference, active, s
             <p className="control is-expanded">
               <input value={value} onChange={onChange} className="input is-expanded wide-input" type="text" placeholder="Stay informed... happily" />
             </p>
-            <p class="control">
+            <p className="control">
               <a className="button is-light search-btn" onClick={onClick}>
                 Search
               </a>
