@@ -5,7 +5,7 @@ export default {
   //headlines= TOP news headlines. Uses the 2-letter ISO 3166-1 code of the country
   headlinesCountry: function (countryCode) {
     return axios.get(
-      'http://newsapi.org/v2/top-headlines?' +
+      'https://newsapi.org/v2/top-headlines?' +
       'country=' + countryCode + 
        '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
@@ -36,7 +36,7 @@ export default {
   //everything= breaking news as well as lesser articles. Keywords or phrases to search for in the article title and body. i.e. All articles about Bitcoin
   everythingQuery: function (query) {
     return axios.get(
-      'http://newsapi.org/v2/everything?q=' + query +  '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
+      'https://newsapi.org/v2/everything?q=' + query +  '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
     );
   },
 
