@@ -19,8 +19,7 @@ const Home = () => {
 
 
   const loadArticles = () => {
-    const countryCode = "us";
-    API.headlinesCountry(countryCode)
+    API.getTopHeadlines()
       .then((res) => {
         if (res.data.length === 0) {
           throw new Error("No results found.");
@@ -70,7 +69,7 @@ const Home = () => {
 
   const handleFormSubmit = event => {
     event.preventDefault();
-    API.everythingQuery(search)
+    API.getSearchedHeadlines(search)
       .then(res => {
         filterNews(res)
       })
