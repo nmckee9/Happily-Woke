@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import "./style.css";
 import positive from "../images/positive.png";
 import Modal from "../Modal";
@@ -31,6 +32,22 @@ function Navbar({ onChange, value, onClick, preference, setpreference, active, s
         </div>
         <div id="navbarExampleTransparentExample navbar-toggle " className={`navbar-menu ${isActive ? "is-active" : ""}`}>
           <div className="navbar-start">
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link">
+              </a>
+              <div className="navbar-dropdown">
+              <a className="navbar-item" href="/signup">
+                  <strong>Sign Up</strong>
+                </a>
+                <a className="navbar-item" href="/login">
+                  Login
+             </a>
+             <div className="navbar-item ">
+                  Logout
+             </div>
+                       
+              </div>
+            </div>
             <p className="navbar-item button mood-btn " role="button"
               onClick={() => { setActive(!active) }}
             >Mood

@@ -3,13 +3,32 @@ import axios from "axios";
 
 export default {
   //headlines= TOP news headlines. Uses the 2-letter ISO 3166-1 code of the country
-  headlinesCountry: function (countryCode) {
-    return axios.get(
-      'http://newsapi.org/v2/top-headlines?' +
-      'country=' + countryCode + 
-       '&pageSize=100&apiKey=' +process.env.REACT_APP_API_KEY
-    );
+
+
+  getTopHeadlines: function () {
+    return axios.get("/api/getnews");
   },
+
+  getSearchedHeadlines: function (query) {
+    return axios.get(`/api/getsearchednews/${query}`);
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   //i.e. Top business headlines from Germany
   headlinesCountryAndCategory: function (countryCode, category) {
@@ -100,4 +119,5 @@ export default {
   deleteArticle: function(id) {
     return axios.delete("/api/articles/" + id);
   },
+  
 }

@@ -4,7 +4,8 @@ import API from "../../utils/API";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-const Home = () => {
+
+const Home = ({isLoggedIn}) => {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [articles, setArticles] = useState([]);
@@ -19,8 +20,8 @@ const Home = () => {
 
 
   const loadArticles = () => {
-    const countryCode = "us";
-    API.headlinesCountry(countryCode)
+    // const countryCode = "us";
+    API.getTopHeadlines()
       .then((res) => {
         if (res.data.length === 0) {
           throw new Error("No results found.");
@@ -70,7 +71,7 @@ const Home = () => {
 
   const handleFormSubmit = event => {
     event.preventDefault();
-    API.everythingQuery(search)
+    API.getSearchedHeadlines(search)
       .then(res => {
         filterNews(res)
       })
@@ -80,9 +81,9 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} setpreference={setPreference} preference={preference} active={active} setActive={setActive}/>
+      <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} setpreference={setPreference} preference={preference} active={active} setActive={setActive} isLoggedIn={isLoggedIn}/>
       <div className="container">
-        <CardGrid articles={articles} isLoading={isLoading} />
+        <CardGrid articles={articles} isLoading={isLoading} isLoggedIn={isLoggedIn}/>
         
       </div>
       <Footer />

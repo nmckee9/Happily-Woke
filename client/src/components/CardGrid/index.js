@@ -3,7 +3,7 @@ import { CardYesImage, CardNoImage } from "../Card"
 import "./style.css";
 import Spinner from "../Spinner"
 
-const CardGrid = ({articles, isLoading}) => {
+const CardGrid = ({articles, isLoading, isLoggedIn}) => {
   
   return isLoading ? (
     <Spinner />
@@ -12,11 +12,11 @@ const CardGrid = ({articles, isLoading}) => {
       {articles.map((article, index) => (
         article.urlToImage ? <CardYesImage key=
         {index} 
-        article={article} 
+        article={article} isLoggedIn={isLoggedIn}
         // isFlipped={currentFlippedIndex}
         
         /> : <CardNoImage key=
-        {index} article={article} />
+        {index} article={article} isLoggedIn={isLoggedIn}/>
       ))}
     </div>
    
