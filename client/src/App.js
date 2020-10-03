@@ -13,8 +13,6 @@ const App = () => {
   const [authTokens, setAuthTokens] = useState(existingTokens);
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-
-
   const setTokens = (data) => {
     localStorage.setItem("tokens", JSON.stringify(data));
     setAuthTokens(data);
