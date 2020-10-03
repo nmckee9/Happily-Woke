@@ -14,22 +14,6 @@ export default {
   },
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //i.e. Top business headlines from Germany
   headlinesCountryAndCategory: function (countryCode, category) {
     return axios.get(

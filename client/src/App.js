@@ -14,25 +14,24 @@ const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
 
 
-  
+
   const setTokens = (data) => {
     localStorage.setItem("tokens", JSON.stringify(data));
     setAuthTokens(data);
   }
-    return (
-      <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+  return (
+    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
       <Router>
-        <div>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
-          <PrivateRoute path="/saved" component={Saved} />
-        </div>
-      </Router>  
-      </AuthContext.Provider>
-    );
-  
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
+        <PrivateRoute path="/saved" component={Saved} />
+        <Route exact path="/home" component={Saved} />
+      </Router>
+    </AuthContext.Provider>
+  );
+
 }
 
 export default App;

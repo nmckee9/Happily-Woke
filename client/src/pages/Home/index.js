@@ -20,7 +20,6 @@ const Home = ({isLoggedIn}) => {
 
 
   const loadArticles = () => {
-    // const countryCode = "us";
     API.getTopHeadlines()
       .then((res) => {
         if (res.data.length === 0) {
