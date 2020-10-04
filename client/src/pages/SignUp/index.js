@@ -8,10 +8,15 @@ import { useAuth } from "../../context/auth";
 function Login() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  
   const { setAuthTokens } = useAuth();
-
+  
+  const handleNameChange = event => {
+    setName(event.target.value)
+  }
   const handleUsernameChange = event => {
     setUsername(event.target.value)
   }
@@ -51,7 +56,17 @@ function Login() {
         <header className="modal-card-head ">
           <h3 class="brand-name">Sign Up</h3>
         </header>
-
+        <div className="field">
+            <p className="control has-icons-left has-icons-right">
+              <input name="name" className="input" type="name" placeholder="Name" value={name} onChange={handleNameChange} />
+              <span className="icon is-small is-left">
+                <i className="fas fa-envelope"></i>
+              </span>
+              <span className="icon is-small is-right">
+                <i className="fas fa-check"></i>
+              </span>
+            </p>
+          </div>
         <div className="field">
           <div className="field">
             <p className="control has-icons-left has-icons-right">
@@ -77,7 +92,7 @@ function Login() {
               <button className="button is-light" type="submit" onClick={handleSubmit}>
                 Sign Up
     </button>
-    <Link to="/login">Already have an account?</Link>
+    <Link to="/login" className="switch-page"> Already have an account?</Link>
         
             </p>
           </div>

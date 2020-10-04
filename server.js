@@ -9,8 +9,10 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Send every request to the React app
-app.use(require("./routes"));
+
+app.use(require("./routes/index"));
+app.use(require("./routes/users"));
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

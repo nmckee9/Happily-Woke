@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export default {
   //headlines= TOP news headlines. Uses the 2-letter ISO 3166-1 code of the country
 
