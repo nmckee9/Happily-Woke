@@ -7,15 +7,10 @@ import { useAuth } from "../../context/auth";
 
 function Login({isLoggedIn, setLoggedIn}) {
   const [isError, setIsError] = useState(false);
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
   const { setAuthTokens } = useAuth();
-
-  const handleNameChange = event => {
-    setName(event.target.value)
-  }
 
   const handleEmailChange = event => {
     setEmail(event.target.value)
@@ -29,7 +24,6 @@ function Login({isLoggedIn, setLoggedIn}) {
 
     //request to server
     axios.post('/login', {
-      name,
       email,
       password
     }).then(res => {
@@ -60,19 +54,6 @@ function Login({isLoggedIn, setLoggedIn}) {
         <header className="modal-card-head ">
           <div class="brand-name">Login</div>
         </header>
-
-        
-        <div className="field">
-            <p className="control has-icons-left has-icons-right">
-              <input name="name" className="input" type="name" placeholder="Name" value={name} onChange={handleNameChange} />
-              <span className="icon is-small is-left">
-                <i className="fas fa-envelope"></i>
-              </span>
-              <span className="icon is-small is-right">
-                <i className="fas fa-check"></i>
-              </span>
-            </p>
-          </div>
 
           <div className="field">
             <p className="control has-icons-left has-icons-right">
