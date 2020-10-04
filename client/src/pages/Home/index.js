@@ -4,7 +4,8 @@ import API from "../../utils/API";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-const Home = () => {
+
+const Home = ({isLoggedIn}) => {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [articles, setArticles] = useState([]);
@@ -79,9 +80,9 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} setpreference={setPreference} preference={preference} active={active} setActive={setActive}/>
+      <Navbar onChange={handleInputChange} value={search} onClick={handleFormSubmit} setpreference={setPreference} preference={preference} active={active} setActive={setActive} isLoggedIn={isLoggedIn}/>
       <div className="container">
-        <CardGrid articles={articles} isLoading={isLoading} />
+        <CardGrid articles={articles} isLoading={isLoading} isLoggedIn={isLoggedIn}/>
         
       </div>
       <Footer />

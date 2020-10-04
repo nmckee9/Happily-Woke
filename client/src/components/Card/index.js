@@ -7,7 +7,7 @@ import Positive from "../FeelingDots/Postive";
 import Negative from "../FeelingDots/Negative";
 import Neutral from "../FeelingDots/Neutral";
 
-export const CardYesImage = ({ article }) => {
+export const CardYesImage = ({ article, isLoggedIn }) => {
   let location = useLocation();
 
   //convert time
@@ -53,7 +53,7 @@ export const CardYesImage = ({ article }) => {
   )
 };
 
-export const CardNoImage = ({ article }) => {
+export const CardNoImage = ({ article, isLoggedIn }) => {
   let location = useLocation();
 
   //convert date and time

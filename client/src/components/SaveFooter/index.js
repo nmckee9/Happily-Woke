@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import API from "../../utils/API";
 
-function SaveFooter({ article }) {
+function SaveFooter({ article, isLoggedIn }) {
   // console.log("SAVE", article)
   const[saved, setSaved] = useState(false);
   const saveArticle = () => {

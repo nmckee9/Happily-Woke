@@ -41,17 +41,24 @@ a {
     font-size: 25px;
   }
 
-  .mood-btn {
+.mood-btn {
       position: relative;
       /* border: none; */
       font-size: 17px;
       top: 5px;
       margin-left: 15px;
-  }
+}
 
-  .search-bar {
+.search-bar {
       position: relative;
       top: 5px;
-  }
+}
+
+.sign-log {
+    position: relative;
+    top: 5px;
+    margin-left: 15px;
+}
+
 
  
