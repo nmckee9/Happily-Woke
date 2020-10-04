@@ -1,4 +1,4 @@
-const config = require("config");
+const config = require("../config/keys");
 const jwt = require("jsonwebtoken");
 
 // Whenever we want a private route, add this middleware as second parameter in the endpoint

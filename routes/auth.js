@@ -4,11 +4,12 @@ const bcrypt = require("bcryptjs");
 require('dotenv').config();
 const config = require('../config/keys');
 const jwt = require("jsonwebtoken");
+const auth = require("../middleware/auth")
 
 // User model
 const User = require("../models/User");
 
-// POST api/auth. Authenticate the user
+// POST api/auth Authenticate the user
 
 router.post("/api/auth", (req, res) => {
     const { email, password } = req.body;
@@ -47,6 +48,13 @@ router.post("/api/auth", (req, res) => {
               )
               })
         })
+});
+
+// GET api/auth/user Validate user with the token
+router.get("/auth/user", auth, (req, res) => {
+  User.findById(req.user.id)
+  .select("-password")
+  .then(user => res.json(user))
 });
 
 module.exports = router
