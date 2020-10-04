@@ -7,24 +7,30 @@ import { useAuth } from "../../context/auth";
 
 function Login({isLoggedIn, setLoggedIn}) {
   const [isError, setIsError] = useState(false);
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
   const { setAuthTokens } = useAuth();
 
-  const handleUsernameChange = event => {
-    setUsername(event.target.value)
+  const handleNameChange = event => {
+    setName(event.target.value)
+  }
+
+  const handleEmailChange = event => {
+    setEmail(event.target.value)
   }
   const handlePasswordChange = event => {
     setPassword(event.target.value)
   }
   const handleSubmit = event => {
     event.preventDefault()
-    console.log("Login username", username);
+    console.log("Login email", email);
 
     //request to server
     axios.post('/login', {
-      username,
+      name,
+      email,
       password
     }).then(res => {
       if (res.status === 200) {
@@ -52,13 +58,25 @@ function Login({isLoggedIn, setLoggedIn}) {
 <br></br>
       <div className="box">
         <header className="modal-card-head ">
-          <div class="brand-name">Login<span> to save and view articles!</span></div>
+          <div class="brand-name">Login</div>
         </header>
 
+        
         <div className="field">
+            <p className="control has-icons-left has-icons-right">
+              <input name="name" className="input" type="name" placeholder="Name" value={name} onChange={handleNameChange} />
+              <span className="icon is-small is-left">
+                <i className="fas fa-envelope"></i>
+              </span>
+              <span className="icon is-small is-right">
+                <i className="fas fa-check"></i>
+              </span>
+            </p>
+          </div>
+
           <div className="field">
             <p className="control has-icons-left has-icons-right">
-              <input name="username" className="input" type="username" placeholder="Email" value={username} onChange={handleUsernameChange} />
+              <input name="email" className="input" type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
               <span className="icon is-small is-left">
                 <i className="fas fa-envelope"></i>
               </span>
@@ -80,13 +98,12 @@ function Login({isLoggedIn, setLoggedIn}) {
               <button className="button is-light" type="submit" onClick={handleSubmit}>
                 Login
     </button>
-    <Link to="/signup">Don't have an account?</Link>
+    <Link to="/signup" className="switch-page"> Don't have an account?</Link>
         
             </p>
           </div>
         </div>
       </div>
-    </div>
   )
 }
 

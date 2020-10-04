@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const News = require("../models");
+const News = require("../models/news");
 const axios = require("axios");
 require('dotenv').config();
 
@@ -49,7 +49,6 @@ router.post("/api/articles", function(req, res){
         res.json(records)
     })
 })
-
 
 
 module.exports = router
