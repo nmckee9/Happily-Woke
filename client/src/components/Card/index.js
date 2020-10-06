@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { useLocation } from "react-router-dom";
 import SaveFooter from "../SaveFooter";
@@ -6,8 +6,11 @@ import DeleteFooter from "../DeleteFooter";
 import Positive from "../FeelingDots/Postive";
 import Negative from "../FeelingDots/Negative";
 import Neutral from "../FeelingDots/Neutral";
+import { useStoreContext } from "../../utils/GlobalState";
 
-export const CardYesImage = ({ article, isLoggedIn }) => {
+export const CardYesImage = ({ article }) => {
+  const [state, dispatch] = useStoreContext();
+
   let location = useLocation();
 
   //convert time
@@ -46,10 +49,14 @@ export const CardYesImage = ({ article, isLoggedIn }) => {
 
         <p>{article.description}</p>
       </div>
-      {location.pathname === "/" || location.pathname === "/home" ? (
-        <SaveFooter article={article} />
+      {state.isAuthenticated ? (
+        location.pathname === "/" || location.pathname === "/home" ? (
+          <SaveFooter article={article} />
+        ) : (
+          <DeleteFooter article={article} />
+        )
       ) : (
-        <DeleteFooter article={article} />
+        ""
       )}
       {(() => {
         if (article.compoundScore >= 0.05) {
@@ -64,7 +71,9 @@ export const CardYesImage = ({ article, isLoggedIn }) => {
   );
 };
 
-export const CardNoImage = ({ article, isLoggedIn }) => {
+export const CardNoImage = ({ article }) => {
+  const [state, dispatch] = useStoreContext();
+
   let location = useLocation();
 
   //convert date and time
@@ -94,10 +103,14 @@ export const CardNoImage = ({ article, isLoggedIn }) => {
         </div>
       </div>
 
-      {location.pathname === "/" || location.pathname === "/home" ? (
-        <SaveFooter article={article} />
+      {state.isAuthenticated ? (
+        location.pathname === "/" || location.pathname === "/home" ? (
+          <SaveFooter article={article} />
+        ) : (
+          <DeleteFooter article={article} />
+        )
       ) : (
-        <DeleteFooter />
+        ""
       )}
 
       {(() => {

@@ -88,7 +88,7 @@ const reducer = (state = initialAuthState, action) => {
 };
 
 const StoreProvider = ({ value = [], ...props }) => {
-  const [state, dispatch] = useReducer(reducer, []);
+  const [state, dispatch] = useReducer(reducer, initialAuthState);
 
   return <Provider value={[state, dispatch]} {...props} />;
 };
