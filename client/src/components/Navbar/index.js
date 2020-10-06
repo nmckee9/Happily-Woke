@@ -13,7 +13,7 @@ function Navbar({ onChange, value, onClick, preference, setpreference, active, s
       <Modal setpreference={setpreference} preference={preference} active={active} onClick={() => { setActive(false) }} />
       <nav className="navbar is-fixed-top">
         <div className="navbar-brand ">
-          <a className="navbar-item brand-name nav-link" href="/home">
+          <a className="navbar-item brand-name nav-link" href="/">
             <img src={positive} className="brand-image" alt="logo" /> happily Woke
           </a>
           <a
@@ -52,7 +52,7 @@ function Navbar({ onChange, value, onClick, preference, setpreference, active, s
               onClick={() => { setActive(!active) }}
             >Mood
             </p>
-            <a className="navbar-item" href="/home">
+            <a className="navbar-item" href="/">
               Home
             </a>
             <a className="navbar-item" href="/saved">
