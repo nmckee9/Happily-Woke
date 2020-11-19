@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+require('dotenv').config();
+const config = require('../config/keys');
+const jwt = require("jsonwebtoken");
 
 // User model
 const User = require("../models/User");
@@ -31,13 +34,26 @@ router.post("/api/users", (req, res) => {
                     newUser.password = hash;
                     newUser.save()
                         .then(user => {
-                            res.json({
-                                user: {
-                                    id: user.id,
-                                    name: user.name,
-                                    email: user.email
+                            //when we send a token, the user id is attached
+                            jwt.sign(
+                                //payload is user id
+                                { id: user.id },
+                                config.jwtSecretKey,
+                                { expiresIn: 3600 },
+                                (err, token) => {
+                                    if (err) throw err;
+                                    res.json({
+                                        token,
+                                        user: {
+                                            id: user.id,
+                                            name: user.name,
+                                            email: user.email
+                                        }
+                                    })
                                 }
-                            })
+                            )
+
+                            
                         })
 
                 })

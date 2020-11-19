@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(require("./routes/index"));
 app.use(require("./routes/users"));
+app.use(require("./routes/auth"));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
