@@ -1,29 +1,34 @@
-# Create React Express App
+# Happily Woke
 
-## About This Boilerplate
+## Description
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+A minimalist news application, using vader-sentiment analysis to filter news headlines based on the mood. You can start by checking the mood you are feeling or which type of news you would like to see (positive, neutral, or negative). The page will then filter and display headline news according to the checked mood. You can also search for articles on any desired topic. You have the abilty to save articles to your "saved page" for future reading and reference.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+The following image shows a glimpse of the application:
 
-## Starting the app locally
+![Screenshot](client/public/assets/Screenshot1.png)<br>
+![Screenshot2](client/public/assets/Screenshot2.png)<br>
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+## Getting Started
 
-```
-npm install
-```
+This is a simple application that runs right in the browser, no installation or downloads needed. 
 
-This should install node modules within the server and the client folder.
+## Built With:
 
-After both installations complete, run the following command in your terminal:
+MongoDB - database<br>
+Express - Server<br>
+React - JavaScript Library<br>
+Bulma - UI Framework
+Node.js - JavaScript runtime
 
-```
-npm start
-```
+## Authors:
+Natalie McKee <br>
+Manuel Quispe<br>
+Melissa Elie<br>
+Berhane Teklemariam<br>
+Alexis Esparza<br>
+Leon Carnagie<br>
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+## Planned Updates
 
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+Planned updates include adding API calls for global news. The current API calls only allow for U.S news.
